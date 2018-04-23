@@ -20,9 +20,9 @@ describe Bank do
 
   describe 'shows balance' do
     it 'shows all transactions' do
-      dummy_transaction = {:date=>"23/04/2018", :amount=>10, :balance=>10}
+      dummy_transaction = {:date=>"23/04/2018", :credit=>10, :debit=>"", :balance=>10}
       subject.account_history << dummy_transaction
-      expect{ subject.print_all }.to output("date || credit || debit || balance\n23/04/2018 || 10 || 10\n").to_stdout
+      expect{ subject.print_all }.to output("date || credit || debit || balance\n23/04/2018 || 10 ||  || 10\n").to_stdout
     end
 
     it 'shows balance' do

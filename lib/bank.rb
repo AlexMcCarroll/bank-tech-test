@@ -11,8 +11,9 @@ class Bank
   end
 
   def withdraw(amount)
+    new_amount = -amount
     @balance -= amount
-    moving_money(amount)
+    moving_money(new_amount)
   end
 
   def deposit(amount)
@@ -23,7 +24,7 @@ class Bank
   def print_all
     puts "date || credit || debit || balance"
     @account_history.each do |x|
-        puts "#{x[:date]} || #{x[:amount]} || #{x[:balance]}"
+        puts "#{x[:date]} || #{x[:credit]} || #{x[:debit]} || #{x[:balance]}"
     end
   end
 
@@ -33,11 +34,17 @@ class Bank
 
   private
 
-  def moving_money(amount)
-    transaction = {}
-    transaction[:date] = @date_created
-    transaction[:amount] = amount
-    transaction[:balance] = @balance
-    @account_history << transaction
-  end
+    def moving_money(amount)
+      transaction = {}
+      transaction[:date] = @date_created
+      if amount > 0
+        transaction[:credit] = amount
+        transaction[:debit] = ""
+      else
+        transaction[:credit] = ""
+        transaction[:debit] = amount.abs
+      end
+      transaction[:balance] = @balance
+      @account_history << transaction
+    end
 end
