@@ -18,4 +18,13 @@ class Bank
     @account_history << (amount)
   end
 
+  def print_all
+    @account_history.each do |x|
+      print x
+    end
+  end
+
+  def print_balance
+    print self.balance
+  end
 end
