@@ -23,6 +23,26 @@ date || credit || debit || balance
 13/01/2012 || 2000 || || 3000
 10/01/2012 || 1000 || || 1000
 ```
+## Overview
+
+### How to use:
+* Fork and download this repo
+* run `bundle install`
+* run `rspec` - 4 tests should pass
+* Using a Ruby REPL you can use this programe:
+  * enter `irb` and `require_relative 'lib/bank.rb'`
+  * `bank = Bank.new`
+    `=> #<Bank:0x00007ff9e4189800 @account_history=[], @balance=0, @date_created="23/04/2018", @credit="", @debit="">`
+  * Deposit $100: `bank.deposit(100)`
+    `=> [{:date=>"23/04/2018", :credit=>100, :debit=>"", :balance=>100}]`
+  * Withdraw $55: `bank.withdraw(55)`
+    `=> [{:date=>"23/04/2018", :credit=>100, :debit=>"", :balance=>100}, {:date=>"23/04/2018", :credit=>"", :debit=>55,       :balance=>45}]`
+  * bank.print_all
+  ```
+  date || credit || debit || balance
+  23/04/2018 || 100 ||  || 100
+  23/04/2018 ||  || 55 || 45
+  ```
 
 ## Domain Modelling
 ![alt-text](bank-tech-test.png)
