@@ -28,10 +28,6 @@ class Bank
     end
   end
 
-  def print_balance
-    print @balance
-  end
-
   private
 
     def moving_money(amount)

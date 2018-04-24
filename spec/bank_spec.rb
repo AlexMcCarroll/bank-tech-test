@@ -24,12 +24,6 @@ describe Bank do
       subject.account_history << dummy_transaction
       expect{ subject.print_all }.to output("date || credit || debit || balance\n23/04/2018 || 10 ||  || 10\n").to_stdout
     end
-
-    it 'shows balance' do
-      subject.deposit(6)
-      subject.deposit(5)
-      expect{ subject.print_balance }.to output("11").to_stdout
-    end
   end
 
 end
