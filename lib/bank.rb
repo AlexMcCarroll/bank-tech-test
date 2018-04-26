@@ -1,9 +1,10 @@
+require_relative 'history.rb'
+
 class Bank
 
-  attr_reader :account_history, :balance, :date_created, :credit, :debit
+  attr_accessor :balance, :date_created, :credit, :debit
 
   def initialize
-    @account_history = []
     @balance = 0
     @date_created = Time.now.strftime("%d/%m/%Y")
     @credit = ""
@@ -21,18 +22,11 @@ class Bank
     moving_money(amount)
   end
 
-  def print_all
-    puts "date || credit || debit || balance"
-    @account_history.each do |x|
-        puts "#{x[:date]} || #{x[:credit]} || #{x[:debit]} || #{x[:balance]}"
-    end
-  end
-
   private
 
     def moving_money(amount)
       transaction = {}
-      transaction[:date] = @date_created
+      transaction[:date] = date_created
       if amount > 0
         transaction[:credit] = amount
         transaction[:debit] = ""
@@ -41,6 +35,6 @@ class Bank
         transaction[:debit] = amount.abs
       end
       transaction[:balance] = @balance
-      @account_history << transaction
+      History.grouped_history(transaction)
     end
 end
