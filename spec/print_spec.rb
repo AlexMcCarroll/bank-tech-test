@@ -1,25 +1,20 @@
 require 'print'
 
-describe Print do
+describe Printer do
+  subject(:printer) { Printer.new }
 
-  subject(:print) { Print.new }
-  let(:dummy_bank) { double :bank }
-  let(:dummy_transaction) {
-    double :history,
-      date: "23/04/2018",
-      credit: 10,
-      debit: "",
-      balance: 10
-      }
+  let(:dummy_history) { double :history,
+                        grouped_history: nil,
+                        account_history: [{:date=>"22/04/2018", :credit=>1, :debit=>"", :balance=>1}]
+                      }
 
   describe 'shows balance' do
-    it 'prints header' do
-      expect{ subject.print_header }.to output("date || credit || debit || balance\n").to_stdout
 
+    it 'prints header' do
+      expect{ printer.print_header }.to output("date || credit || debit || balance\n").to_stdout
     end
     it 'shows all transactions' do
-      dummy_bank.account_history << dummy_transaction
-      expect{ subject.print_body }.to output("23/04/2018 || 10 ||  || 10").to_stdout
+      expect{ printer.print_body(dummy_history) }.to output("22/04/2018 || 1 ||  || 1\n").to_stdout
     end
   end
 end
