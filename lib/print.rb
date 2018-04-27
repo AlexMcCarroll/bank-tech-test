@@ -7,9 +7,15 @@ class Printer
   end
 
   def print_body(history = History)
-    history.account_history.each do |x|
-      puts "#{x[:date]} || #{x[:credit]} || #{x[:debit]} || #{x[:balance]}"
+    x = history.account_history.reverse
+    x.each do |y|
+      puts "#{y[:date]} || #{y[:credit]} || #{y[:debit]} || #{y[:balance]}"
     end
+  end
+
+  def print_all
+    print_header
+    print_body
   end
 
 end
