@@ -30,14 +30,22 @@ date || credit || debit || balance
 * run `bundle install`
 * run `rspec` - 4 tests should pass
 * Using a Ruby REPL you can use this programe:
-  * enter `irb` and `require_relative 'lib/bank.rb'`
+  * enter `irb`
+  *`require_relative 'lib/bank.rb'`
+  *`require_relative 'lib/history.rb'`
+  *`require_relative 'lib/print.rb'`
+
   * `bank = Bank.new`
+  * `history = History.new`
+  * `printer = Printer.new`
+  
     `=> #<Bank:0x00007ff9e4189800 @account_history=[], @balance=0, @date_created="23/04/2018", @credit="", @debit="">`
   * Deposit $100: `bank.deposit(100)`
     `=> [{:date=>"23/04/2018", :credit=>100, :debit=>"", :balance=>100}]`
   * Withdraw $55: `bank.withdraw(55)`
     `=> [{:date=>"23/04/2018", :credit=>100, :debit=>"", :balance=>100}, {:date=>"23/04/2018", :credit=>"", :debit=>55,       :balance=>45}]`
-  * bank.print_all
+  * `printer.print_all`
+  
   ```
   date || credit || debit || balance
   23/04/2018 || 100 ||  || 100
