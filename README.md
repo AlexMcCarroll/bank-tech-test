@@ -44,7 +44,8 @@ date || credit || debit || balance
     `=> [{:date=>"23/04/2018", :credit=>100, :debit=>"", :balance=>100}]`
   * Withdraw $55: `bank.withdraw(55)`
     `=> [{:date=>"23/04/2018", :credit=>100, :debit=>"", :balance=>100}, {:date=>"23/04/2018", :credit=>"", :debit=>55,       :balance=>45}]`
-  * printer.print_all
+  * `printer.print_all`
+  
   ```
   date || credit || debit || balance
   23/04/2018 || 100 ||  || 100
